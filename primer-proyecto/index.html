@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+    content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Primeros pasos en Vue</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.0.3/vue.js"></script>
+</head>
+
+<body>
+  <div id="app"></div>
+
+  <template id='mensaje-template'>
+    <div>
+      <h3>{{ login ? 'Estas logueado' : 'No estas logueado' }}</h3>
+      <a v-bind:href="url" target='_blank'>
+        <img v-bind:src='imagen' v-bind:alt='url' />
+      </a>
+      <h1>{{ mensaje }}</h1>
+      <p v-html='mensajeHTML'></p>
+      <p>{{ number * 5 }}</p>
+
+      <h1>Metodos</h1>
+      <h2>Contador</h2>
+      <p style='font-size: 1.5rem;'>{{ contador > 0 ? contador : 0 }}</p>
+      <button v-on:click='contador++'>+</button>
+      <button v-on:click='contador--'>-</button>
+      <button v-on:click='resetContador'>Reset</button>
+      <button v-on:click='setCount(10)'>+10</button>
+    </div>
+  </template>
+
+  <script src="./js/app.js"></script>
+</body>
+
+</html>
