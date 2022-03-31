@@ -20,7 +20,10 @@ const vm = new Vue({
   },
   methods: {
     addGoal() {
-      this.goal.push(this.goalInput)
+      this.goalInput
+        ? this.goal.push(this.goalInput)
+        : console.error('No puede estar vacio')
+
       this.goalInput = ''
       console.log(this.goal)
     },
