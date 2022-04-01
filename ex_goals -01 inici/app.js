@@ -27,9 +27,21 @@ const vm = new Vue({
       this.goalInput = ''
       console.log(this.goal)
     },
-    removeGoal(goal) {
-      this.goal.splice(this.goal.indexOf(goal), 1)
-      console.log(this.goal)
+    removeGoalAll() {
+      this.goal.length = 0
+    },
+    removeGolById(e) {
+      console.log(e.target)
+
+      // this.goal = this.goal.splice(this.goal.indexOf(id), 1)
+    },
+    setDone(e) {
+      e.target.style.textDecoration = 'line-through'
+    },
+    enter(e) {
+      if (e.key === 'Enter') {
+        this.addGoal()
+      }
     },
   },
 })

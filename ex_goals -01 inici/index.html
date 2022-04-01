@@ -13,9 +13,16 @@
   <div id="app">
     <div>
       <label for="goal">Goal</label>
-      <input type="text" id="goal" v-model="goalInput" />
+      <input type="text" id="goal" v-model="goalInput" v-on:keypress="enter" />
+      <div v-for="(gol, i) in goal">
+        <div class='goal'>
+          {{ i + 1 }}
+          <p @click="setDone" class="goal__title">{{ gol }}</p>
+          <span @click="removeGolById" class='close'>X</span>
+        </div>
+      </div>
       <button v-on:click="addGoal">Add Goal</button>
-      <button v-on:click="removeGoal">Remove Goal</button>
+      <button v-on:click="removeGoalAll">RemoveAll Goal</button>
     </div>
   </div>
   <script src="app.js"></script>
