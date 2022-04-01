@@ -19,8 +19,8 @@ const app = new Vue({
     mostrar: true,
     mensaje: 'Benvingut a VUE',
     imagen: 'img/vue.jpg',
-    num1: '',
-    num2: '',
+    num1: 0,
+    num2: 0,
     total: 0,
   },
   methods: {
@@ -28,7 +28,7 @@ const app = new Vue({
       this.mostrar = !this.mostrar
     },
     displaynumbers() {
-      return (this.total = this.num1 + this.num2)
+      return (this.total = +this.num1 + +this.num2)
     },
   },
 })
