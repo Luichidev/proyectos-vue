@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<script src='https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.17/vue.js'></script>
+	<title>Document</title>
+</head>
+
+<body>
+	<div id="my-app">
+		<b>ejercicio 1</b>
+		<!--Iterar array con index:  Muestra la nota de cada estudiante i muestra el indice del array:  -->
+		<ul>
+			<li v-for="(ele, index) in students" :key="index">
+				indice: {{ index }} Nota: {{ ele.note }}
+			</li>
+		</ul>
+
+		<b>ejercicio 2</b>
+		<!-- Acceder a la propiedad del estudiante 0,  -->
+		<p> {{ students[0].name }} </p>
+
+		<b>ejercicio 3</b>
+		<!-- Iterar un objeto con key: Muestra todos los atributos de student -->
+		<div v-for="(ele, key) in student" :key='key'>
+			<p>{{ key }} : {{ele}} </p>
+		</div>
+
+		<b>ejercicio 4</b>
+		<!-- Iterar un rango: Itera la variable i hasta 10  -->
+		<!-- <div v-for="i in 10">
+			<p>{{ i }}</p>
+		</div> -->
+		<p v-for="n in getI">{{ n }}</p>
+
+
+		<b>ejercicio 5</b>
+		<!-- v-for con v-if: Muestra todos los estudiantes con nota > 5 -->
+		<ul v-for="ele in students" v-if="ele.note > 5">
+			<li>Nombre: {{ ele.name }} Nota: {{ ele.note }}</li>
+		</ul>
+	</div>
+
+	<script>
+		const app = new Vue({
+			el: '#my-app',
+			data() {
+				return {
+					i: 0,
+					students: [
+						{ name: 'Noe', note: 10 },
+						{ name: 'Manu', note: 10 },
+						{ name: 'Belén', note: 5 }
+					],
+					student: {
+						name: 'Carlos',
+						lastname: 'Rodriguez',
+						note: 10
+					}
+				}
+			},
+			computed: {
+				getI() {
+					return this.i
+				}
+			}
+		})
+	</script>
+</body>
+
+</html>
