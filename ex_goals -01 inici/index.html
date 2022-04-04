@@ -14,15 +14,16 @@
     <div>
       <label for="goal">Goal</label>
       <input type="text" id="goal" v-model="goalInput" v-on:keypress="enter" />
-      <div v-for="(gol, i) in goal">
-        <div class='goal'>
-          {{ i + 1 }}
-          <p @click="setDone" class="goal__title">{{ gol }}</p>
-          <span @click="removeGolById" class='close'>X</span>
-        </div>
-      </div>
       <button v-on:click="addGoal">Add Goal</button>
       <button v-on:click="removeGoalAll">RemoveAll Goal</button>
+      <label for="find">Buscar</label>
+      <input type="text" id="find" v-model='find'>
+      <div v-for="goal in filteredGoal">
+        <div class='goal'>
+          <p @click="setDone" v-bind:data-id="goal.id" class="goal__title">📋 {{ goal.goal }}</p>
+          <span @click="removeGolById" v-bind:data-id="goal.id" class='close'>X</span>
+        </div>
+      </div>
     </div>
   </div>
   <script src="app.js"></script>

@@ -1,27 +1,19 @@
-// const buttonEl = document.querySelector('button')
-// const inputEl = document.querySelector('input')
-// const listEl = document.querySelector('ul')
-
-// function addGoal() {
-//   const enteredValue = inputEl.value
-//   const listItemEl = document.createElement('li')
-//   listItemEl.textContent = enteredValue
-//   listEl.appendChild(listItemEl)
-//   inputEl.value = ''
-// }
-
-// buttonEl.addEventListener('click', addGoal)
-
 const vm = new Vue({
   el: '#app',
   data: {
     goal: [],
     goalInput: '',
+    find: '',
+    count: 0,
   },
   methods: {
     addGoal() {
+      const objGoal = {
+        id: this.count++,
+        goal: this.goalInput,
+      }
       this.goalInput
-        ? this.goal.push(this.goalInput)
+        ? this.goal.push(objGoal)
         : console.error('No puede estar vacio')
 
       this.goalInput = ''
@@ -29,19 +21,29 @@ const vm = new Vue({
     },
     removeGoalAll() {
       this.goal.length = 0
+      this.goal = []
+      this.find = ''
     },
     removeGolById(e) {
-      console.log(e.target)
-
-      // this.goal = this.goal.splice(this.goal.indexOf(id), 1)
+      const id = e.target.getAttribute('data-id')
+      this.goal.splice(id, 1)
+      this.find = ''
     },
     setDone(e) {
       e.target.style.textDecoration = 'line-through'
+      e.target.style.backgroundColor = '#a2a29c'
     },
     enter(e) {
       if (e.key === 'Enter') {
         this.addGoal()
       }
+    },
+  },
+  computed: {
+    filteredGoal() {
+      return this.goal.filter((goal) =>
+        goal.goal.toLowerCase().includes(this.find.toLowerCase())
+      )
     },
   },
 })

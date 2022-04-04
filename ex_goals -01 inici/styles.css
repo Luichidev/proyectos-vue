@@ -20,6 +20,7 @@ body {
 label,
 input {
   margin-bottom: 0.5rem;
+  margin-top: 0.5rem;
   display: block;
   width: 100%;
 }
@@ -56,12 +57,14 @@ li {
 .goal {
   display: flex;
   align-items: center;
-  background-color: #d7cece;
-  height: 2.5rem;
+  background-color: #5a9be0;
   margin-bottom: 8px;
+  margin-top: 8px;
   border-radius: 0.25rem;
 }
 .goal__title {
   width: 100%;
+  margin: 0.25rem;
+  border-radius: 0.25rem;
   padding: 8px;
 }
