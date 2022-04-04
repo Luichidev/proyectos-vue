@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport"
+		content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.min.js"></script>
+	<title>VueJs Instance</title>
+</head>
+
+<body>
+	<style>
+		#databinding {
+			padding: 20px 15px 15px 15px;
+			margin: 0 0 25px 0;
+			width: auto;
+			background-color: #e7e7e7;
+		}
+
+		span,
+		option,
+		input {
+			font-size: 25px;
+		}
+	</style>
+
+	<div id="databinding">
+		<h1>Benvinguda:</h1>
+		<h1>Currency Converter</h1>
+		<span>Enter Amount:</span>
+		<input type="number" v-model='amount' placeholder="Enter Amount" /><br /><br />
+		<span>Convert From:</span>
+		<select v-model="convertfrom" v-on:change='convert' style="width:300px;font-size:25px;">
+			<option v-for='opt in currencyfrom' :value="opt.name">{{ opt.desc }}</option>
+		</select>
+		<span>Convert To:</span>
+		<select v-model="convertto" v-on:change='convert' style="width:300px;font-size:25px;">
+			<option v-for='opt in currencyfrom' :value="opt.name">{{ opt.desc }}</option>
+		</select><br /><br />
+		<h1 v-if='amount !== ""'>{{ amount }} {{ convertfrom }} to {{ convertto }} = {{ result }}</h1>
+	</div>
+
+	<script>
+		var app = new Vue({
+			el: '#databinding',
+			data: {
+				currencyfrom: [
+					{ name: "USD", desc: "US Dollar" },
+					{ name: "EUR", desc: "Euro" },
+					{ name: "INR", desc: "Indian Rupee" },
+					{ name: "BHD", desc: "Bahraini Dinar" }
+				],
+
+				INR: [
+					{ to: "USD", rate: 0.016 },
+					{ to: "EUR", rate: 0.013 },
+					{ to: "BHD", rate: 0.0059 }
+				],
+
+				EUR: [
+					{ to: "USD", rate: 1.19 },
+					{ to: "INR", rate: 76.22 },
+					{ to: "BHD", rate: 0.45 }
+				],
+
+				USD: [
+					{ to: "EUR", rate: 0.84 },
+					{ to: "INR", rate: 63.88 },
+					{ to: "BHD", rate: 0.38 }
+				],
+
+				BHD: [
+					{ to: "USD", rate: 2.65 },
+					{ to: "EUR", rate: 2.22 },
+					{ to: "INR", rate: 169.44 },
+				],
+
+				amount: "",
+				convertto: 'USD',
+				convertfrom: 'INR',
+				result: 0
+			},
+			computed: {
+				convert: function () {
+					if (this.amount !== "") {
+						if (this.convertfrom === this.convertto) {
+							this.result = this.amount;
+						} else {
+							let money = this[this.convertto]
+							money.forEach(element => {
+								if (element.to === this.convertfrom) {
+									this.result = (this.amount * element.rate).toFixed(2);
+								}
+							});
+						}
+					}
+				}
+			}
+		});
+	</script>
+</body>
+
+</html>
