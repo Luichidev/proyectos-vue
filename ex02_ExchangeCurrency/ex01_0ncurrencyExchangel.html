@@ -27,25 +27,26 @@
 	</style>
 
 	<div id="databinding">
-		<h1>Benvinguda:</h1>
+		<h1>Benvingud@: {{ user }}</h1>
 		<h1>Currency Converter</h1>
 		<span>Enter Amount:</span>
 		<input type="number" v-model='amount' placeholder="Enter Amount" /><br /><br />
 		<span>Convert From:</span>
-		<select v-model="convertfrom" v-on:change='convert' style="width:300px;font-size:25px;">
+		<select v-model="convertfrom" style="width:300px;font-size:25px;">
 			<option v-for='opt in currencyfrom' :value="opt.name">{{ opt.desc }}</option>
 		</select>
 		<span>Convert To:</span>
-		<select v-model="convertto" v-on:change='convert' style="width:300px;font-size:25px;">
+		<select v-model="convertto" style="width:300px;font-size:25px;">
 			<option v-for='opt in currencyfrom' :value="opt.name">{{ opt.desc }}</option>
 		</select><br /><br />
-		<h1 v-if='amount !== ""'>{{ amount }} {{ convertfrom }} to {{ convertto }} = {{ result }}</h1>
+		<h1 v-if='amount !== ""'>{{ amount }} {{ convertfrom }} son {{ convert }} {{ convertto }}</h1>
 	</div>
 
 	<script>
 		var app = new Vue({
 			el: '#databinding',
 			data: {
+				user: 'Luichidev',
 				currencyfrom: [
 					{ name: "USD", desc: "US Dollar" },
 					{ name: "EUR", desc: "Euro" },
@@ -83,19 +84,78 @@
 				result: 0
 			},
 			computed: {
-				convert: function () {
+				finalAmount() {
+					let to = this.convertto
+					let from = this.convertfrom
+					let final;
+
+					switch (from) {
+						case 'INR':
+							if (to === 'USD') {
+								final = this.amount * 0.016
+							}
+							if (to === 'EUR') {
+								final = this.amount * 0.013
+							}
+							if (to === 'BDH') {
+								final = this.amount * 0.0059
+							}
+							break
+						case 'USD':
+							if (to === 'INR') {
+								final = this.amount * 63.88
+							}
+							if (to === 'EUR') {
+								final = this.amount * 0.84
+							}
+							if (to === 'BHD') {
+								final = this.amount * 0.38
+							}
+							break
+						case 'EUR':
+							if (to === 'INR') {
+								final = this.amount * 72.22
+							}
+							if (to === 'USD') {
+								final = this.amount * 1.19
+							}
+							if (to === 'BHD') {
+								final = this.amount * 0.45
+							}
+							break
+						case 'BHD':
+							if (to === 'INR') {
+								final = this.amount * 169.44
+							}
+							if (to === 'USD') {
+								final = this.amount * 2.65
+							}
+							if (to === 'EUR') {
+								final = this.amount * 2.22
+							}
+							break
+
+					}
+					return final;
+				},
+
+				convert() {
+					let to = this.convertto
+					let from = this.convertfrom
+					let final;
 					if (this.amount !== "") {
-						if (this.convertfrom === this.convertto) {
-							this.result = this.amount;
+						if (from === to) {
+							final = this.amount;
 						} else {
-							let money = this[this.convertto]
+							let money = this[from]
 							money.forEach(element => {
-								if (element.to === this.convertfrom) {
-									this.result = (this.amount * element.rate).toFixed(2);
+								if (element.to === to) {
+									final = (this.amount * element.rate).toFixed(2);
 								}
 							});
 						}
 					}
+					return final
 				}
 			}
 		});
