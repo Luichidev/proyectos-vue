@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+    content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.min.js"></script>
+  <title>Watches</title>
+</head>
+
+<body>
+  <div id='app'>
+    <label for="km">Kilometros</label>
+    <input type="number" id='km' v-model='kilometros'>
+    <label for="m">Metros</label>
+    <input type="number" id='m' v-model='metros'>
+
+    <br>
+    <br>
+    <label for="ce">celcius</label>
+    <input type="number" id='ce' v-model='celcius'>
+    <label for="fa">Fahrenheit</label>
+    <input type="number" id='fa' v-model='faren'>
+  </div>
+  <script>
+    const vm = new Vue({
+      el: '#app',
+      data: {
+        kilometros: 0,
+        metros: 0,
+        celcius: 0,
+        faren: 32
+      },
+      watch: {
+        kilometros: function (valor) {
+          this.kilometros = valor
+          this.metros = valor * 1000
+        },
+        metros: function (valor) {
+          this.kilometros = valor / 1000
+          this.metros = valor
+        },
+        celcius: function (valor) {
+          this.celcius = valor
+          this.faren = valor * 1.8 + 32
+        },
+        faren: function (valor) {
+          this.faren = valor
+          this.celcius = (valor - 32) / 1.8
+        }
+
+      }
+
+    })
+  </script>
+</body>
+
+</html>

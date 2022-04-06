@@ -53,31 +53,31 @@
 					{ name: "INR", desc: "Indian Rupee" },
 					{ name: "BHD", desc: "Bahraini Dinar" }
 				],
+				currencyExchange: {
+					INR: [
+						{ to: "USD", rate: 0.016 },
+						{ to: "EUR", rate: 0.013 },
+						{ to: "BHD", rate: 0.0059 }
+					],
 
-				INR: [
-					{ to: "USD", rate: 0.016 },
-					{ to: "EUR", rate: 0.013 },
-					{ to: "BHD", rate: 0.0059 }
-				],
+					EUR: [
+						{ to: "USD", rate: 1.19 },
+						{ to: "INR", rate: 76.22 },
+						{ to: "BHD", rate: 0.45 }
+					],
 
-				EUR: [
-					{ to: "USD", rate: 1.19 },
-					{ to: "INR", rate: 76.22 },
-					{ to: "BHD", rate: 0.45 }
-				],
+					USD: [
+						{ to: "EUR", rate: 0.84 },
+						{ to: "INR", rate: 63.88 },
+						{ to: "BHD", rate: 0.38 }
+					],
 
-				USD: [
-					{ to: "EUR", rate: 0.84 },
-					{ to: "INR", rate: 63.88 },
-					{ to: "BHD", rate: 0.38 }
-				],
-
-				BHD: [
-					{ to: "USD", rate: 2.65 },
-					{ to: "EUR", rate: 2.22 },
-					{ to: "INR", rate: 169.44 },
-				],
-
+					BHD: [
+						{ to: "USD", rate: 2.65 },
+						{ to: "EUR", rate: 2.22 },
+						{ to: "INR", rate: 169.44 },
+					],
+				},
 				amount: "",
 				convertto: 'USD',
 				convertfrom: 'INR',
@@ -142,12 +142,12 @@
 				convert() {
 					let to = this.convertto
 					let from = this.convertfrom
-					let final;
+					let final = "";
 					if (this.amount !== "") {
 						if (from === to) {
 							final = this.amount;
 						} else {
-							let money = this[from]
+							let money = this.currencyExchange[from]
 							money.forEach(element => {
 								if (element.to === to) {
 									final = (this.amount * element.rate).toFixed(2);
