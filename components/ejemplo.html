@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.min.js"></script>
+  <title>Ejemplo | Componentes</title>
+</head>
+
+<body>
+  <div id="app">
+    <h1>{{ name }}</h1>
+    <h2>El primer botó esta a dins del objecte VUE </h2> <!-- Cridem directamente al Objecte de VUE -->
+    <button @click="onAdd">{{ count }} boto objecte VUE</button>
+    <h2>El segon botó està fet amb un component </h2> <!-- Cridem a un component de VUE -->
+    <mybutton></mybutton>
+    <mybutton></mybutton>
+    <br>
+    <user-details first='Luis' last='Arana'></user-details>
+    <user-details v-bind:first='firstName' v-bind:last='lastName'></user-details>
+    <user-details :first='firstName' :last='lastName'></user-details>
+  </div>
+  <script>
+    Vue.component('mybutton', {
+      //template: "#boto", 
+      template: ` <div><br><button @click="onAdd2">{{ count }} boto component</button></div> `,
+      data() {
+        return {
+          count: 0
+        }
+      },
+      methods: {
+        onAdd2() {
+          this.count += 1
+        }
+      }
+    })
+
+    Vue.component('user-details', {
+      template: `<div> <p> hi {{ first }} {{ last }} 🖐</p></div>`,
+      props: ["first", "last"]
+    })
+
+    const app = new Vue({
+      el: '#app',
+      data: {
+        name: 'Hola classe, això és un exemple de COMPONENT',
+        count: 0,
+        firstName: 'Luis A.',
+        lastName: 'Arana'
+      },
+      methods: {
+        onAdd() {
+          this.count += 1
+        }
+      }
+    })
+
+  </script>
+</body>
+
+</html>

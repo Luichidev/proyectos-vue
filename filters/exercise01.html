@@ -12,20 +12,26 @@
 
 <body>
   <div id='app'>
-    <label for="num">Introduce un numero</label> <br>
-    <input type="number" id='num' v-model='nro'>
-    <p>Número sin redondeo: {{ nro | euro }}</p>
-    <p>Número con redondeo:{{ nro | redondeo }}</p>
+    <h1>Exercici 1</h1>
+    <p>Donat un input text de tipus número.</p>
+    <p>Renderitza el seu valor per pantalla.</p>
+    <ol>
+      <li>Afegeix un filtre per donar al enter introduït en el input text, format de Euros</li>
+      <li>Afegeix un segon filtre per treure decimals, en cas de que hi hagi.</li>
+    </ol>
+    <label for="num">Introdueix un número amb decimals: </label> <input type="number" id='num' v-model='precio'>
+    <h2>Número sensa decimals: {{ precio | euro }}</h2>
+    <h2>Número amb decimals: {{ precio | redondeo | euro }}</h2>
   </div>
   <script>
     const vm = new Vue({
       el: '#app',
       data: {
-        nro: 100.45
+        precio: 100.45
       },
       filters: {
         euro(valor) {
-          return valor + ' € 💰'
+          return valor + ' €'
         },
         redondeo(valor) {
           return Math.round(valor)
