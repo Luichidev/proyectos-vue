@@ -12,11 +12,16 @@
 	<div id="app">
 		<div class="marketplace">
 			<course-css v-if="course.type==='course-css'" v-for="course in courses" :key="course.id" :title="course.title"
-				:subtitle="course.subtitle" :description="course.description" @add="addToCart">
+				:subtitle="course.subtitle" :description="course.description" :price="course.price" @add="addToCart">
 			</course-css>
 
 			<course-JS v-if="course.type==='course-js'" v-for="course in courses" :key="course.id" :title="course.title"
-				:subtitle="course.subtitle" :description="course.description" @add="addToCart"></course-JS>
+				:subtitle="course.subtitle" :description="course.description" :price="course.price" @add="addToCart">
+			</course-JS>
+
+			<course-vue v-if="course.type==='course-vue'" v-for="course in courses" :key="course.id" :title="course.title"
+				:subtitle="course.subtitle" :description="course.description" :price="course.price" @add="addToCart">
+			</course-vue>
 		</div>
 
 		<ul class="cart">
@@ -27,6 +32,7 @@
 	<script src="./componentes/course.js"></script>
 	<script src="./componentes/courseCSS.js"></script>
 	<script src="./componentes/courseJS.js"></script>
+	<script src="./componentes/courseVue.js"></script>
 	<script src="./componentes/app.js"></script>
 
 </body>

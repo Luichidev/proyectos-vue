@@ -9,6 +9,7 @@ const app = new Vue({
         description:
           'En este curso explicaremos de la mano de los mejores profesores JS los principios básicos',
         type: 'course-js',
+        price: 10,
       },
       {
         id: 2,
@@ -17,6 +18,7 @@ const app = new Vue({
         description:
           'En este curso explicaremos de la mano de los mejores profesores JS los principios avanzados',
         type: 'course-js',
+        price: 40,
       },
       {
         id: 3,
@@ -25,6 +27,7 @@ const app = new Vue({
         description:
           'En este curso explicaremos de la mano de los mejores profesores CSS los principios básicos',
         type: 'course-css',
+        price: 10,
       },
       {
         id: 4,
@@ -33,6 +36,25 @@ const app = new Vue({
         description:
           'En este curso explicaremos de la mano de los mejores profesores CSS los principios básicos',
         type: 'course-css',
+        price: 40,
+      },
+      {
+        id: 5,
+        title: 'Curso Vue en 10 min',
+        subtitle: 'Aprende lo básico en VUE',
+        description:
+          'En este curso explicaremos en 10 min todo lo basico para crear tu primera aplicacion de Vue.',
+        type: 'course-vue',
+        price: 10,
+      },
+      {
+        id: 6,
+        title: 'Curso de 0 a experto en 1hora',
+        subtitle: 'Aprende lo avanzado en VUE',
+        description:
+          'En este curso explicaremos de la mano de los mejores profesores Vue avanzado',
+        type: 'course-vue',
+        price: 50,
       },
     ],
     cart: [],

@@ -16,6 +16,7 @@ const courseContent = {
     title: { type: String, required: true },
     subtitle: { type: String, required: true },
     description: { type: String, required: true },
+    price: { type: Number, required: true },
   },
   template: `
         <main class="course-content">
@@ -24,6 +25,7 @@ const courseContent = {
                 <h3>{{ title }}</h3>
                 <h4>{{ subtitle }}</h4>
                 <p> {{ description }}</p>
+                <p> Precio: {{ price }} € </p>
             </section>
         </main>
     `,
@@ -53,6 +55,7 @@ const course = {
     title: { type: String, required: true },
     subtitle: { type: String, required: true },
     description: { type: String, required: true },
+    price: { type: Number, required: true },
   },
   components: {
     'course-header': courseHeader,
@@ -72,7 +75,7 @@ const course = {
   template: `
         <div :class="['course', styleClass]">
             <course-header :title="header.title" :image="header.image"></course-header>
-            <course-content :title="title" :subtitle="subtitle" :description="description"></course-content>
+            <course-content :title="title" :subtitle="subtitle" :description="description" :price="price"></course-content>
             <course-footer :months="months" @add="add"></course-footer>
         </div>
     `,
