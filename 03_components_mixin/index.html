@@ -25,7 +25,8 @@
 		</div>
 
 		<ul class="cart">
-			<li v-for="course in cart">{{ course.title }} – {{ course.months }} meses</li>
+			<li v-for="course in cart">{{ course.title }} – {{ course.months }} meses, Precio: {{ course.price * course.months
+				}}€</li>
 		</ul>
 	</div>
 

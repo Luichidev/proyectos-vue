@@ -25,7 +25,7 @@ const courseContent = {
                 <h3>{{ title }}</h3>
                 <h4>{{ subtitle }}</h4>
                 <p> {{ description }}</p>
-                <p> Precio: {{ price }} € </p>
+                <p> Precio: {{ price }} €/mes </p>
             </section>
         </main>
     `,
@@ -81,7 +81,11 @@ const course = {
     `,
   methods: {
     add: function (months) {
-      this.$emit('add', { title: this.title, months: months })
+      this.$emit('add', {
+        title: this.title,
+        months: months,
+        price: this.price,
+      })
     },
   },
 }
