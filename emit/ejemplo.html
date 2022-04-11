@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+    content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+  <title>Ejemplo EMITS</title>
+</head>
+
+<body>
+  <div id="app">
+    <div id="blog-posts-events-demo">
+      <div :style="{ fontSize: postFontSize + 'em' }">
+        <blog-post v-for="post in posts" v-bind:key="post.id" v-bind:post="post"
+          v-on:enlarge-text='onEnlargeText($event)'></blog-post>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    Vue.component('blog-post', {
+      props: ['post'],
+      template: `<div class="blog-post">
+                  <h3>{{ post.title }}</h3>
+                  Valor del texto <input v-model="valor">
+                  <button v-on:click="enviarPadre()">Agrandar texto</button>
+                </div>`,
+      data() {
+        return {
+          valor: 1
+        }
+      },
+      methods: {
+        enviarPadre() {
+          this.$emit('enlarge-text', this.valor)
+        }
+      }
+    });
+
+
+    const vm = new Vue({
+      el: '#app',
+      data: {
+        posts: [
+          {
+            id: 1,
+            title: "titulo 01"
+          }
+        ],
+        postFontSize: 1
+      },
+      methods: {
+        onEnlargeText: function (enlargeAmount) {
+          this.postFontSize = enlargeAmount;
+        },
+      },
+    })
+  </script>
+</body>
+
+</html>
