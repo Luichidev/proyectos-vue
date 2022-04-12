@@ -6,10 +6,13 @@ var vm = new Vue({
     addr: '',
     custdet: [],
     styleobj: {
-      backgroundColor: '#2196F3!important',
+      backgroundColor: '#2196F3',
       cursor: 'pointer',
       padding: '8px 16px',
       verticalAlign: 'middle',
+      borderRadius: '0.25rem',
+      border: 'none',
+      color: 'white',
     },
   },
   methods: {
