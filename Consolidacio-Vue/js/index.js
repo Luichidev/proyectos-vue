@@ -1,7 +1,6 @@
 const vm = new Vue({
   el: '#app',
   data: {
-    // Data
     frases: [
       {
         id: 1,
@@ -37,8 +36,5 @@ const vm = new Vue({
         autor: '- Maestro Yoda',
       },
     ],
-  },
-  methods: {
-    // Methods
   },
 })

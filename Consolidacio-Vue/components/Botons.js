@@ -1,14 +1,12 @@
 Vue.component('Botons', {
   template: ` <div class="botons">
-        <button v-if="seleccion > 0" @click="prev()">Anterior</button>
-        <button v-if="seleccion != num - 1" @click="next()">Siguiente</button>
+        <button v-if="activeItem > 0" @click="prev()">Anterior</button>
+        <button v-if="activeItem != frasesLength - 1" @click="next()">Siguiente</button>
       </div>`,
-  props: ['seleccion', 'num'],
+  props: ['activeItem', 'frasesLength'],
   data() {
     return {
       current: 0,
-      num: '',
-      seleccion: '',
     }
   },
 

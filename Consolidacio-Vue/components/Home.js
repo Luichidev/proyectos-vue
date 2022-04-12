@@ -2,7 +2,7 @@ Vue.component('Home', {
   template: `<section class="home" v-bind:style="cssObj">
               <div class="home-header">
                 <h1>Frases de StarsWar</h1>
-                <Botons v-on:currentSentence="selectItem($event)" :seleccion="activeItem" :num="frases.length"></Botons>
+                <Botons v-on:currentSentence="selectItem($event)" :activeItem="activeItem" :frasesLength="frases.length"></Botons>
               </div>
               <div class="home-body">
                 <Escena v-for="(frase, index) in frases" :key="index" :frase="frase" :class="{active: index === activeItem}"></Escena>
