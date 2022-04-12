@@ -1,0 +1,71 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: #fff;
+  color: #333;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+.home {
+  min-height: 100vh;
+  background-repeat: no-repeat !important;
+  background-size: cover !important;
+  background-position: center !important;
+}
+.home-header {
+  background: rgba(0, 0, 0, 0.5);
+  display: grid;
+  margin-bottom: 8px;
+  padding: 8px;
+  place-content: center;
+}
+.home-header button {
+  background-color: #1453b2;
+  border-radius: 0.25rem;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+  font-size: 1.5rem;
+  font-weight: bold;
+  padding: 10px;
+}
+.home-header button:hover {
+  background-color: #3c81e8;
+  color: #000;
+}
+.home-header h1 {
+  color: #1453b2;
+  font-size: 3rem;
+  font-weight: bold;
+  padding: 32px 0;
+  text-shadow: 1px 1px 1px #fff;
+}
+.home-body {
+  background: rgba(0, 0, 0, 0.4);
+  border-radius: 3.5rem;
+  margin: 0 auto;
+  width: 80%;
+}
+.frases {
+  border-radius: 3.5rem;
+  border: 1px solid #fff;
+  color: #fff;
+  font-size: 1.1rem;
+  margin-bottom: 16px;
+  padding: 16px;
+  text-shadow: 1px 1px 1px #000;
+}
+.frases > span {
+  display: block;
+  margin-bottom: 8px;
+  text-shadow: 1px 1px 1px blue;
+}
+.active {
+  background-color: #1453b2;
+}
