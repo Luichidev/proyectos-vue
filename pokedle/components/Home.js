@@ -4,8 +4,10 @@ Vue.component('Home', {
       <div class="poke-container">
         <label>The Pokemon is...</label>
         <input type="text" v-model="word" @keyup.enter="askWord">
-        <button @click="askWord">Ask</button>
+        <button v-if="!win" @click="askWord">Ask</button>
+        <button v-if="again" @click="reset">Again</button>
         <p v-if="errorMsg !== ''" class="error">{{ errorMsg }}</p>
+        <p v-if="win" class="success">{{ msg }}</p>
       </div>
       <div class="words-container" v-for="letter in reverseResult">
         <div v-for="ele in letter" class="letter" :class="ele.color">
@@ -23,40 +25,45 @@ Vue.component('Home', {
       previousGuesses: [],
       globalResults: [],
       tries: 0,
+      again: false,
+      win: false,
+      msg: '',
     }
   },
   created() {
-    const randomID = Math.floor(Math.random() * this.POKEMON_AVALIABLE) + 1
-    const url = `https://pokeapi.co/api/v2/pokemon/${randomID}`
-    fetch(url)
-      .then((response) => response.json())
-      .then((data) => {
-        this.pokemon = data.name.toUpperCase()
-      })
+    this.getPokemon()
   },
   methods: {
     askWord: function () {
       this.word = this.word.toUpperCase()
       this.errorMsg = ''
-      if (this.word == null || this.word === '') {
-        this.errorMsg = '💬 You must provide a possible pokemon name.'
-      } else if (this.word.length !== this.pokemon.length) {
-        this.errorMsg =
-          '💬 The pokemon name must be ' +
-          this.pokemon.length +
-          ' characters long.'
-      } else if (this.previousGuesses.includes(this.word)) {
-        this.errorMsg = '💬 You already tried this pokemon name.'
-      } else if (!/^[a-zA-Z]+$/.test(this.word)) {
-        this.errorMsg = '💬 The pokemon name must contain only letters.'
-      }
-      if (this.errorMsg === '') {
-        this.startGame()
+      this.win = this.word === this.pokemon
+      if (!this.win) {
+        if (this.word == null || this.word === '') {
+          this.errorMsg = '💬 You must provide a possible pokemon name.'
+        } else if (this.word.length !== this.pokemon.length) {
+          this.errorMsg =
+            '💬 The pokemon name must be ' +
+            this.pokemon.length +
+            ' characters long.'
+        } else if (this.previousGuesses.includes(this.word)) {
+          this.errorMsg = '💬 You already tried this pokemon name.'
+        } else if (!/^[a-zA-Z]+$/.test(this.word)) {
+          this.errorMsg = '💬 The pokemon name must contain only letters.'
+        }
+        if (this.errorMsg === '') {
+          this.startGame()
+        }
+      } else {
+        this.globalResults.push(this.print())
+        this.again = true
+        this.msg = '🎉 You won! The pokemon was ' + this.pokemon + '.'
       }
     },
     startGame() {
       if (this.tries >= this.MAX_TRIES) {
         this.errorMsg = '💥 You lost! The pokemon was ' + this.pokemon + '.'
+        this.again = true
       } else {
         this.tries++
         this.globalResults.push(this.print())
@@ -77,6 +84,27 @@ Vue.component('Home', {
         }
       })
       return result
+    },
+    reset() {
+      this.tries = 0
+      this.globalResults = []
+      this.previousGuesses = []
+      this.getPokemon()
+      this.again = false
+      this.win = false
+      this.word = ''
+      this.errorMsg = ''
+      this.msg = ''
+    },
+    getPokemon() {
+      const randomID = Math.floor(Math.random() * this.POKEMON_AVALIABLE) + 1
+      const url = `https://pokeapi.co/api/v2/pokemon/${randomID}`
+      fetch(url)
+        .then((response) => response.json())
+        .then((data) => {
+          this.pokemon = data.name.toUpperCase()
+          console.log(this.pokemon)
+        })
     },
   },
   computed: {

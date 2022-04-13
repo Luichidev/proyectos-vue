@@ -32,6 +32,16 @@ h1 {
   padding: 8px;
 }
 
+.poke-container button {
+  margin: 0 0 0 8px;
+  background-color: #da471b;
+  border: none;
+  border-radius: 0.25rem;
+  color: #fff;
+  cursor: pointer;
+  min-width: 100px;
+}
+
 .words-container {
   display: flex;
   align-items: center;
@@ -63,6 +73,14 @@ h1 {
   background: #f8d7da;
   padding: 8px;
   color: #721c24;
+  border-radius: 0.25rem;
+  max-width: 50%;
+  margin: 8px auto;
+}
+.success {
+  background: #d4edda;
+  padding: 8px;
+  color: #155724;
   border-radius: 0.25rem;
   max-width: 50%;
   margin: 8px auto;
