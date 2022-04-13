@@ -1,0 +1,69 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+h1 {
+  text-align: center;
+  text-transform: uppercase;
+  margin-bottom: 16px;
+}
+
+#app {
+  max-width: 1024px;
+  min-width: 375px;
+  margin: 32px auto 0;
+}
+
+.poke-container {
+  text-align: center;
+  margin-bottom: 32px;
+}
+
+.poke-container label,
+.poke-container input,
+.poke-container button {
+  font-size: 1.1rem;
+  padding: 8px;
+}
+
+.words-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 8px;
+}
+
+.letter {
+  width: 1.5em;
+  height: 1.5em;
+  margin: 0.1em;
+  padding: 0.1em;
+  border: 1px solid #000;
+  text-align: center;
+  font-size: 2.5em;
+  font-weight: bold;
+  color: #fff;
+}
+.green {
+  background: #6aaa64;
+}
+.yellow {
+  background: #cab557;
+}
+.grey {
+  background: #ccc;
+}
+.error {
+  background: #f8d7da;
+  padding: 8px;
+  color: #721c24;
+  border-radius: 0.25rem;
+  max-width: 50%;
+  margin: 8px auto;
+}
