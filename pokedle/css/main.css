@@ -11,13 +11,28 @@ body {
 h1 {
   text-align: center;
   text-transform: uppercase;
-  margin-bottom: 16px;
+  font-size: 2.5rem;
 }
 
 #app {
   max-width: 1024px;
   min-width: 375px;
   margin: 32px auto 0;
+}
+.header {
+  padding: 8px;
+  background-color: #fafafa;
+  margin-bottom: 16px;
+}
+
+.header__container {
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  align-content: center;
+  max-width: 1024px;
+  min-width: 375px;
 }
 
 .poke-container {

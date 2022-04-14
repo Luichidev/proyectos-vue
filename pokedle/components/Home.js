@@ -1,6 +1,5 @@
 Vue.component('Home', {
   template: `<div>
-      <h1>Pokedle</h1>
       <div class="poke-container">
         <label>The Pokemon is...</label>
         <input type="text" v-model="word" @keyup.enter="askWord">
@@ -69,6 +68,7 @@ Vue.component('Home', {
         this.globalResults.push(this.print())
         this.previousGuesses.push(this.word)
         this.word = ''
+        this.$emit('gettries', this.MAX_TRIES - this.tries)
       }
     },
     print() {
