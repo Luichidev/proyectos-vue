@@ -123,3 +123,32 @@ h2 {
   max-width: 50%;
   margin: 8px auto;
 }
+
+@media screen and (max-width: 414px) {
+  .poke-container {
+    margin-bottom: 16px;
+    display: flex;
+    flex-direction: column;
+    padding: 16px;
+  }
+  .poke-container label,
+  .poke-container input,
+  .poke-container button,
+  .poke-container select {
+    font-size: 1rem;
+    padding: 8px;
+    border-radius: 0.25rem;
+    width: 100%;
+    margin-bottom: 16px;
+  }
+  .poke-container button {
+    margin: 0 0 8px;
+  }
+  .error,
+  .success {
+    max-width: 100%;
+  }
+  .letter {
+    font-size: 1.6rem;
+  }
+}
