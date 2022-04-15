@@ -4,7 +4,7 @@ const app = new Vue({
     <main>
       <Header :vidas="tries"/>
       <Pickbox v-if="!start" @selected="getValue($event)"/>
-      <Home v-if="start" @gettries=addTry($event) :generation="generation"/>
+      <Home v-if="start" @gettries=addTry($event) @reset="reset($event)" :generation="generation"/>
     </main>
   `,
   data: {
@@ -50,6 +50,10 @@ const app = new Vue({
     getValue(value) {
       this.start = true
       this.generation = this.range[value]
+    },
+    reset(value) {
+      this.start = false
+      this.tries = 6
     },
   },
 })

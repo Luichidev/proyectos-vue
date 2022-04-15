@@ -34,11 +34,15 @@ Vue.component('Home', {
       msg: '',
       imgUrl: '',
       midDash: false,
+      pokemonLength: 0,
     }
   },
   props: ['generation'],
   created() {
-    this.getPokemon()
+    this.getPokemon().then(() => {
+      this.pokemonLength = this.pokemon.length
+      this.globalResults.push(this.print(this.pokemonLength))
+    })
   },
   methods: {
     askWord: function () {
@@ -59,6 +63,11 @@ Vue.component('Home', {
           this.errorMsg = '💬 The pokemon name must contain only letters.'
         }
         if (this.errorMsg === '') {
+          if (this.MAX_TRIES === 6) {
+            this.globalResults = []
+            this.globalResults.length = 0
+          }
+
           this.startGame()
         }
       } else {
@@ -81,29 +90,39 @@ Vue.component('Home', {
         this.again = true
       }
     },
-    print() {
+    print(blank = 0) {
       let result = []
-      const letters = this.word.split('')
-      letters.forEach((letter, index) => {
-        if (letter === this.pokemon[index]) {
-          result[index] = { name: letter, color: 'green' }
-        } else if (
-          this.pokemon.includes(letter) &&
-          !this.previousGuesses.includes(letter)
-        ) {
-          result[index] = { name: letter, color: 'yellow' }
-        } else {
-          result[index] = { name: letter, color: 'grey' }
+
+      if (blank > 0) {
+        for (let i = 0; i < this.pokemonLength; i++) {
+          result.push({
+            name: ' ',
+            color: 'blank',
+          })
         }
-      })
+      } else {
+        const letters = this.word.split('')
+        letters.forEach((letter, index) => {
+          if (letter === this.pokemon[index]) {
+            result[index] = { name: letter, color: 'green' }
+          } else if (
+            this.pokemon.includes(letter) &&
+            !this.previousGuesses.includes(letter)
+          ) {
+            result[index] = { name: letter, color: 'yellow' }
+          } else {
+            result[index] = { name: letter, color: 'grey' }
+          }
+        })
+      }
       return result
     },
     reset() {
       this.MAX_TRIES = 6
       this.$emit('gettries', this.MAX_TRIES)
+      this.$emit('reset', false)
       this.globalResults = []
       this.previousGuesses = []
-      this.getPokemon()
       this.again = false
       this.win = false
       this.word = ''
@@ -116,13 +135,14 @@ Vue.component('Home', {
       let random = Math.floor(Math.random() * (max - min + 1)) + min
 
       const url = `https://pokeapi.co/api/v2/pokemon/${random}`
-      fetch(url)
+      return fetch(url)
         .then((response) => response.json())
         .then((data) => {
           this.imgUrl = data.sprites.front_default
           this.pokemon = data.name.toUpperCase()
           this.midDash = this.pokemon.includes('-')
           console.log(this.pokemon)
+          return this.pokemon.length
         })
     },
   },
