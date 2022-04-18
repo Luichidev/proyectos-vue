@@ -1,5 +1,11 @@
-const vm = new Vue({
+const app = new Vue({
   el: '#app',
+  template: `
+  <main>
+    <Home :frases="frases"></Home>
+  </main>
+
+  `,
   data: {
     frases: [
       {
