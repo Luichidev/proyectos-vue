@@ -15,13 +15,13 @@
           </div>
     </div>
     <div class="words-container" v-for="(letter, i) in reverseResult" :key="i">
-      <EachLetter v-for="ele in letter" :letter="ele" :key="ele.name"/>
+      <EachLetter v-for="(ele, index) in letter" :letter="ele" :key="index"/>
     </div>
   </div>
 </template>
 
 <script>
-import EachLetter from './components/EachLetter.vue'
+import EachLetter from './EachLetter.vue'
 export default {
   name: 'HomeApp',
   data() {
@@ -41,7 +41,6 @@ export default {
       previousGuesses: [],
       globalResults: [],
       imgUrl: '',
-      reverseResult: [],
       placeHolder: 'Type a word'
     }
   },
@@ -49,7 +48,7 @@ export default {
     EachLetter
   },
   props: {
-    generation: String
+    generation: Object
   },
   created() {
     this.getPokemon().then(() => {
@@ -159,7 +158,6 @@ export default {
           this.imgUrl = data.sprites.front_default
           this.pokemon = data.name.toUpperCase()
           this.midDash = this.pokemon.includes('-')
-          console.log(this.pokemon)
           return this.pokemon.length
         })
     },
@@ -167,16 +165,23 @@ export default {
       this.globalResults = []
       this.globalResults.length = 0
     },
+    
   },
   computed: {
     reverseResult() {
-      return this.globalResults.reverse()
+      return [...this.globalResults].reverse()
     },
   },
 }
 </script>
 
 <style scoped>
+.words-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 8px;
+}
 .error {
   background: #f8d7da;
   padding: 8px;

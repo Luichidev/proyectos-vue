@@ -8,7 +8,7 @@
 export default {
   name: 'EachLetter',
   props: {
-    letter: Array
+    letter: Object
   }
 }
 </script>

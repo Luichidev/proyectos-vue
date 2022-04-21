@@ -1,21 +1,21 @@
   <template>
-  <main>
+  <main id="app">
       <HeaderApp :vidas="tries"/>
-      <Pickbox v-if="!start" @selected="getValue($event)"/>
+      <PickBox v-if="!start" @selected="getValue($event)"/>
       <HomeApp v-if="start" @gettries=addTry($event) @reset="reset" :generation="generation"/>
     </main>
 </template>
 
 <script>
 import HeaderApp from './components/HeaderApp.vue'
-import Pickbox from './components/Pickbox.vue'
+import PickBox from './components/Pickbox.vue'
 import HomeApp from './components/HomeApp.vue'
 
 export default {
   name: 'App',
   components: {
     HeaderApp,
-    Pickbox,
+    PickBox,
     HomeApp
   },
   data() {
@@ -102,6 +102,7 @@ h2 {
 
 .poke-container {
   text-align: center;
+  margin-bottom: 32px;
 }
 
 .poke-container label,
@@ -131,7 +132,7 @@ h2 {
   .poke-container {
     display: flex;
     flex-direction: column;
-    padding: 16px;
+    margin-bottom: 16px;
   }
   .poke-container label,
   .poke-container input,
