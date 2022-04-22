@@ -1,12 +1,23 @@
 <template>
   <div id="app">
-    <nav>
+    <!-- <nav>
       <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </nav>
+      <router-link to="/jokes">Jokes</router-link>
+    </nav> -->
+    <NavBar/>
     <router-view/>
   </div>
 </template>
+
+<script lang="ts">
+import NavBar from './components/NavBar.vue'
+
+export default {
+  components: {
+    NavBar
+  } 
+}
+</script>
 
 <style>
   * {
@@ -20,7 +31,6 @@
     -moz-osx-font-smoothing: grayscale;
     text-align: center;
     color: #989090;
-    margin-top: 60px;
     background: #161616;
   }
   .container {
@@ -38,6 +48,6 @@
   }
 
   nav a.router-link-exact-active {
-    color: #42b983;
+    color: #42b983 !important;
   }
 </style>
