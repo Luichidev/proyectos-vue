@@ -6,15 +6,18 @@
     </nav> -->
     <NavBar/>
     <router-view/>
+    <FooterApp/>
   </div>
 </template>
 
 <script lang="ts">
 import NavBar from './components/NavBar.vue'
+import FooterApp from './components/FooterApp.vue'
 
 export default {
   components: {
-    NavBar
+    NavBar,
+    FooterApp
   } 
 }
 </script>
