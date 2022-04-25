@@ -1,0 +1,130 @@
+[
+  {
+    "_id": "837bbca2-b670-460a-95d6-3557df426a75",
+    "colId": "0fe36b93-8ec3-43b6-b4c9-2613557ed0d8",
+    "containerId": "",
+    "name": "Categorias de los chistes",
+    "url": "https://api.chucknorris.io/jokes/categories",
+    "method": "GET",
+    "sortNum": 10000,
+    "created": "2022-04-25T08:51:30.089Z",
+    "modified": "2022-04-25T08:51:30.089Z",
+    "headers": [],
+    "params": [],
+    "tests": []
+  },
+  {
+    "_id": "d7860e2b-3ad6-4d27-87bc-61577deaeedd",
+    "colId": "0fe36b93-8ec3-43b6-b4c9-2613557ed0d8",
+    "containerId": "",
+    "name": "Chistes de perros",
+    "url": "https://api.chucknorris.io/jokes/search?query=dogs",
+    "method": "GET",
+    "sortNum": 20000,
+    "created": "2022-04-25T08:52:19.479Z",
+    "modified": "2022-04-25T08:52:19.479Z",
+    "headers": [],
+    "params": [
+      {
+        "name": "query",
+        "value": "dogs",
+        "isPath": false
+      }
+    ],
+    "tests": []
+  },
+  {
+    "_id": "6f9dadb8-9aba-45af-9bc2-fe2354df971b",
+    "colId": "8d1382e8-a4bd-4f48-8049-9b1288ef79d6",
+    "containerId": "",
+    "name": "Todos los productos",
+    "url": "https://fakestoreapi.com/products",
+    "method": "GET",
+    "sortNum": 10000,
+    "created": "2022-04-25T10:47:16.155Z",
+    "modified": "2022-04-25T10:47:16.155Z",
+    "headers": [],
+    "params": [],
+    "tests": []
+  },
+  {
+    "_id": "5ae6cd76-6689-4657-a595-da4f7e8e956e",
+    "colId": "8d1382e8-a4bd-4f48-8049-9b1288ef79d6",
+    "containerId": "",
+    "name": "Todas las categorias",
+    "url": "https://fakestoreapi.com/products/categories",
+    "method": "GET",
+    "sortNum": 20000,
+    "created": "2022-04-25T10:49:49.703Z",
+    "modified": "2022-04-25T10:49:49.703Z",
+    "headers": [],
+    "params": [],
+    "tests": []
+  },
+  {
+    "_id": "e5ddd154-74c2-4ee7-986f-2abaea21797e",
+    "colId": "8d1382e8-a4bd-4f48-8049-9b1288ef79d6",
+    "containerId": "",
+    "name": "Categoria Joyeria",
+    "url": "https://fakestoreapi.com/products/category/jewelery",
+    "method": "GET",
+    "sortNum": 30000,
+    "created": "2022-04-25T10:51:29.182Z",
+    "modified": "2022-04-25T10:51:29.182Z",
+    "headers": [],
+    "params": [],
+    "tests": []
+  },
+  {
+    "_id": "ef3215c1-4e3d-4d22-b4dd-e336a68c4ddd",
+    "colId": "8d1382e8-a4bd-4f48-8049-9b1288ef79d6",
+    "containerId": "",
+    "name": "Producto 7",
+    "url": "https://fakestoreapi.com/products/7",
+    "method": "GET",
+    "sortNum": 40000,
+    "created": "2022-04-25T10:53:01.049Z",
+    "modified": "2022-04-25T10:53:01.049Z",
+    "headers": [],
+    "params": [],
+    "tests": []
+  },
+  {
+    "_id": "f530553a-912b-4c40-87bc-e8524821fcb5",
+    "colId": "8d1382e8-a4bd-4f48-8049-9b1288ef79d6",
+    "containerId": "",
+    "name": "Crear un producto",
+    "url": "https://fakestoreapi.com/products",
+    "method": "POST",
+    "sortNum": 50000,
+    "created": "2022-04-25T10:55:31.964Z",
+    "modified": "2022-04-25T10:56:48.285Z",
+    "headers": [],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\n    \"title\": \"zapatillas lacost\",\n    \"price\": 129.95,\n    \"description\": \"Zapatillas casuales\",\n    \"category\": \"men's clothing\",\n    \"image\": \"https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg\",\n    \"rating\": {\n      \"rate\": 3.9,\n      \"count\": 120\n    }\n    \n}",
+      "form": []
+    },
+    "tests": []
+  },
+  {
+    "_id": "e6ab10ab-670a-4e98-97a1-67d68cacf259",
+    "colId": "8d1382e8-a4bd-4f48-8049-9b1288ef79d6",
+    "containerId": "",
+    "name": "Actualizar el producto 7",
+    "url": "https://fakestoreapi.com/products/7",
+    "method": "PUT",
+    "sortNum": 60000,
+    "created": "2022-04-25T10:57:54.317Z",
+    "modified": "2022-04-25T10:57:54.317Z",
+    "headers": [],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\n  \"title\": \"White Gold Plated Princess\",\n  \"price\": 100,\n  \"description\": \"Classic Created Wedding Engagement Solitaire Diamond Promise Ring for Her. Gifts to spoil your love more for Engagement, Wedding, Anniversary, Valentine's Day...\",\n  \"category\": \"jewelery\",\n  \"image\": \"https://fakestoreapi.com/img/71YAIFU48IL._AC_UL640_QL65_ML3_.jpg\",\n  \"rating\": {\n    \"rate\": 3,\n    \"count\": 400\n  }\n}",
+      "form": []
+    },
+    "tests": []
+  }
+]
