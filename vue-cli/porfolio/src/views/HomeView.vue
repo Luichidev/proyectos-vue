@@ -16,3 +16,11 @@ export default {
   }
 }
 </script>
+
+<style scoped>
+section {
+  min-height: 50vh;
+  display: grid;
+  place-content: center;
+}
+</style>

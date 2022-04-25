@@ -4,7 +4,7 @@
     <h2>Acudit del dia</h2> 
     <b-card
       title="Card Title"
-      img-src="https://picsum.photos/id/1074/500"
+      img-src="https://www.lavanguardia.com/files/content_image_desktop_filter/uploads/2020/03/10/5fa90778dce37.jpeg"
       img-alt="Image"
       img-top
       tag="article"
@@ -20,7 +20,7 @@
 </template>
 
 <script>
-import axios from "axios";
+import useJokes from "../services/useJokes.js";
 export default {
   data() { 
     return { 
@@ -34,11 +34,13 @@ export default {
   },
   methods: {
     getJoke() { 
-      axios .get("https://api.chucknorris.io/jokes/random") 
-          .then((response) => {
-            const { data } = response
-            this.acudit = data.value
-          }); 
+      useJokes()
+      .then(response => {
+        this.acudit = response;
+      })
+      .catch(error => {
+        console.log(error);
+      })
     }
   }
 }
