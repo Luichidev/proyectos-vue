@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <nav class="navbar navbar-expand navbar-dark bg-dark">
+    <nav class="navbar navbar-expand navbar-dark bg-dark sticky-top">
       <div class="container">  
         <router-link to="/" class="navbar-brand">Solo48h</router-link>
         <div class="navbar-nav mr-auto">
@@ -29,11 +29,10 @@ export default {
 
 <style>
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
+  font-family: Arial, Avenir, Helvetica, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
 }
 </style>
