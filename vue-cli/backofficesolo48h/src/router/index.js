@@ -10,11 +10,11 @@ export default new Router({
       name: 'productos',
       component: () => import('../components/ProductosList'),
     },
-    // {
-    //   path: '/productos/:id',
-    //   name: 'producto-details',
-    //   component: () => import('./components/Producto'),
-    // },
+    {
+      path: '/productos/:id',
+      name: 'producto-details',
+      component: () => import('../components/ProductoApp'),
+    },
     {
       path: '/add',
       name: 'add',
