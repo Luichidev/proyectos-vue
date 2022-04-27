@@ -99,58 +99,6 @@
       "categoria": "Deporte",
       "popularidad": 10,
       "tendencia": false
-    },
-    {
-      "titulo": "zapatillas nike",
-      "descripcion": "zapatillas nike",
-      "precio": "90.99",
-      "categoria": "Deporte",
-      "tendencia": false,
-      "id": 11,
-      "published": true,
-      "url": "https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/19748bd0-5a80-4583-9c3f-e29a24044a58/air-max-270-g-zapatillas-de-golf-3GkJ0N.png"
-    }
-  ],
-  "categorias": [
-    {
-      "id": 1,
-      "name": "Deporte"
-    },
-    {
-      "id": 2,
-      "name": "Electrónica"
-    },
-    {
-      "id": 3,
-      "name": "Deporte"
-    },
-    {
-      "id": 4,
-      "name": "Salud y Belleza"
-    },
-    {
-      "id": 5,
-      "name": "Hogar"
-    },
-    {
-      "id": 6,
-      "name": "Cosmética"
-    },
-    {
-      "id": 7,
-      "name": "Bricolaje"
-    },
-    {
-      "id": 8,
-      "name": "Salud y Belleza"
-    },
-    {
-      "id": 9,
-      "name": "Hogar"
-    },
-    {
-      "id": 10,
-      "name": "Alimentación"
     }
   ]
 }
