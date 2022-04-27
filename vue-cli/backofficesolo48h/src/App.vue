@@ -1,14 +1,16 @@
 <template>
   <div id="app">
     <nav class="navbar navbar-expand navbar-dark bg-dark">
-      <router-link to="/" class="navbar-brand">Solo48h</router-link>
-      <div class="navbar-nav mr-auto">
-        <li class="nav-item">
-          <router-link to="/productos" class="nav-link">Productos</router-link>
-        </li>
-        <li class="nav-item">
-          <router-link to="/add" class="nav-link">Add</router-link>
-        </li>
+      <div class="container">  
+        <router-link to="/" class="navbar-brand">Solo48h</router-link>
+        <div class="navbar-nav mr-auto">
+          <li class="nav-item">
+            <router-link to="/productos" class="nav-link">Ver productos</router-link>
+          </li>
+          <li class="nav-item">
+            <router-link to="/add" class="nav-link">Añadir productos</router-link>
+          </li>
+        </div>
       </div>
     </nav>
     <div class="container mt-3">
