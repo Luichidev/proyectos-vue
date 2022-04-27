@@ -2,7 +2,7 @@
   <div class="submit-form">
     <div v-if="!submitted">
       <div class="form-group">
-        <label for="titulo">Title</label>
+        <label for="titulo">Titulo</label>
         <input
           type="text"
           class="form-control"
@@ -13,7 +13,19 @@
         />
       </div>
       <div class="form-group">
-        <label for="descripcion">Description</label>
+        <label for="imagen">Imagen</label>
+        <input
+          type="text"
+          class="form-control"
+          id="imagen"
+          required
+          v-model="producto.url"
+          name="imagen"
+          placeholder="http://"
+        />
+      </div>
+      <div class="form-group">
+        <label for="descripcion">Descripción</label>
         <input
           class="form-control"
           id="descripcion"
@@ -26,37 +38,38 @@
         <label for="precio">Precio</label>
         <input
           class="form-control"
+          type="number"
           id="precio"
           required
           v-model="producto.precio"
           name="precio"
         />
       </div>
-      <div class="form-group">
+      <div class="form-group mb-2">
         <label for="categoria">Categoria</label>
-        <select :categoria='categoria'>
-          <option value="-1">-</option>
-          <option value="0">Deporte</option>
-          <option value="1">Maquillaje</option>
-          <option value="2">Bricolaje</option>
-          <option value="3">Electrónica</option>
+        <select class="form-select form-select-sm" aria-label=".form-select-sm" id="categoria" v-model="producto.categoria">
+          <option value="-1" selected>-</option>
+          <option value="Deporte">Deporte</option>
+          <option value="Maquillaje">Maquillaje</option>
+          <option value="Bricolaje">Bricolaje</option>
+          <option value="Electronica">Electrónica</option>
         </select>
       </div>
-      <div class="form-group">
-        <label for="tendencia">Tendencia</label>
+      <div class="form-check mb-2">
         <input
-          class="form-control"
+          class="form-check-input"
           id="tendencia"
           type="checkbox"
           v-model="producto.tendencia"
           name="tendencia"
         />
+        <label class="form-check-label" for="tendencia">Tendencia</label>
       </div>
-      <button @click="saveProducto" class="btn btn-success">Submit</button>
+      <button @click="saveProducto" class="btn btn-success">Enviar🚀</button>
     </div>
-    <div v-else>
-      <h4>You submitted successfully!</h4>
-      <button class="btn btn-success" @click="newProducto">Add</button>
+    <div v-else class="mt-2">
+      <h4>¡Lo enviaste con éxito!</h4>
+      <button class="btn btn-success" @click="newProducto">Añadir</button>
     </div>
   </div>
 </template>
@@ -69,6 +82,7 @@ export default {
       producto: {
         id: null,
         titulo: "",
+        url: "",
         descripcion: "",
         precio: 0,
         categoria: "",

@@ -2,54 +2,64 @@
   <div class="list row">
     <div class="col-md-8">
       <div class="input-group mb-3">
-        <input type="text" class="form-control" placeholder="Search by title"
+        <input type="text" class="form-control" placeholder="Buscar por titulo"
           v-model="title"/>
         <div class="input-group-append">
           <button class="btn btn-outline-secondary" type="button"
             @click="searchTitle"
           >
-            Search
+            Buscar 🔍
           </button>
         </div>
       </div>
     </div>
     <div class="col-md-6">
-      <h4>Productos List</h4>
+      <h4>Listado de productos</h4>
       <ul class="list-group">
-        <li class="list-group-item"
+        <li class="list-group-item d-flex align-items-center"
           :class="{ active: index == currentIndex }"
           v-for="(producto, index) in productos"
           :key="index"
           @click="setActiveProducto(producto, index)"
         >
-          {{ producto.titulo }}
+        <div class="d-flex align-items-center">
+          <div class="flex-shrink-0">
+            <img width="100" height="100" :src="producto.url" :alt="producto.titulo">
+          </div>
+          <div class="flex-grow-1 ms-3">
+            {{ producto.titulo }}
+          </div>
+        </div>
         </li>
       </ul>
       <button class="m-3 btn btn-sm btn-danger" @click="removeAllProductos">
-        Remove All
+        Eliminar todos
       </button>
     </div>
     <div class="col-md-6">
       <div v-if="currentProducto">
         <h4>Producto</h4>
         <div>
-          <label><strong>Title:</strong></label> {{ currentProducto.titulo }}
+          <label><strong>Titulo:</strong></label> {{ currentProducto.titulo }}
         </div>
         <div>
-          <label><strong>Description:</strong></label> {{ currentProducto.descripcion }}
+          <label><strong>Descripción:</strong></label> {{ currentProducto.descripcion }}
         </div>
         <div>
           <label><strong>Precio:</strong></label> {{ currentProducto.precio}}
         </div>
-        <a class="badge badge-warning"
+        <div>
+          <label><strong>Categoria:</strong></label> {{ currentProducto.categoria}}
+        </div>
+        <a class="btn btn-warning"
           :href="'/productos/' + currentProducto.id"
         >
-          Edit
+          Editar ✏️
         </a>
       </div>
       <div v-else>
         <br />
-        <p>Please click on a Tutorial...</p>
+        <p>Selecciona un producto del Listado...</p>
       </div>
     </div>
   </div>
