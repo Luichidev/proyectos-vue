@@ -19,7 +19,7 @@ class ProductoDataService {
     return http.delete(`/productos`)
   }
   findByTitle(title) {
-    return http.get(`/productos?title=${title}`)
+    return http.get(`/productos?q=${title}`)
   }
 }
 export default new ProductoDataService()
