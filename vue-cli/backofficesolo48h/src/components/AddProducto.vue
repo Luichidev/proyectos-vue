@@ -53,6 +53,7 @@
           <option value="Maquillaje">Maquillaje</option>
           <option value="Bricolaje">Bricolaje</option>
           <option value="Electronica">Electrónica</option>
+          <option value="crear">Crear categoria</option>
         </select>
       </div>
       <div class="form-check mb-2">
@@ -88,13 +89,15 @@ export default {
         categoria: "",
         tendencia: false
       },
-      submitted: false
+      submitted: false,
+      optionsSelect: []
     };
   },
   methods: {
     saveProducto() {
       var data = {
         titulo: this.producto.titulo,
+        url: this.producto.url,
         descripcion: this.producto.descripcion,
         precio: this.producto.precio,
         categoria: this.producto.categoria,
