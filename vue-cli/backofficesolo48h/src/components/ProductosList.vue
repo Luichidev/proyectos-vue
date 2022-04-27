@@ -3,7 +3,7 @@
     <div class="col-md-8">
       <div class="input-group mb-3">
         <input type="text" class="form-control" placeholder="Buscar por titulo"
-          v-model="title"/>
+          v-model="titulo" @keyup.enter="searchTitle"/>
         <div class="input-group-append">
           <button class="btn btn-outline-secondary" type="button"
             @click="searchTitle"
@@ -24,7 +24,7 @@
         >
         <div class="d-flex align-items-center">
           <div class="flex-shrink-0">
-            <img width="100" height="100" :src="producto.url" :alt="producto.titulo">
+            <img width="100" height="100" :src="producto.url" :alt="producto.titulo" :title="producto.titulo">
           </div>
           <div class="flex-grow-1 ms-3">
             {{ producto.titulo }}
@@ -36,7 +36,7 @@
         Eliminar todos
       </button>
     </div>
-    <div class="col-md-6">
+    <div class="col-md-6 fixed">
       <div v-if="currentProducto">
         <h4>Producto</h4>
         <div>
@@ -73,7 +73,7 @@ export default {
       productos: [],
       currentProducto: null,
       currentIndex: -1,
-      title: ""
+      titulo: ""
     };
   },
   methods: {
@@ -108,10 +108,11 @@ export default {
     },
     
     searchTitle() {
-      ProductoDataService.findByTitle(this.title)
+      ProductoDataService.findByTitle(this.titulo)
         .then(response => {
           this.productos = response.data;
           console.log(response.data);
+          this.titulo = "";
         })
         .catch(e => {
           console.log(e);
@@ -128,5 +129,11 @@ export default {
   text-align: left;
   max-width: 750px;
   margin: auto;
+}
+.fixed {
+  position: fixed;
+  right: 0;
+  z-index: 1030;
+  top: 110px;
 }
 </style>
