@@ -15,7 +15,7 @@
       "titulo": "Smartwatch, 1.69 pulgadas Hombre Mujer con Monitor de Frecuencia Cardíaca",
       "url": "http://localhost:3000/assets/images/product/product2.jpg",
       "descripcion": "1.69' Pantalla Táctil Completa a Color TFT -Smartwatch Multifuncións: como pulsera de actividad (podómetro, calorías, distancia), oxígeno sanguíneo, entrenamiento respiratorio, pulsómetro, monitoreo del sueño, 12 modos de deporte, recordatorio sedentario, notificaciones de llamadas, mensajes SMS y APP, cronómetro, reloj despertador, controla la música, encontrar teléfono, pronóstico del tiempo, ajuste de brillo-12 Modos Deportivos y Función Impermeable IP68-24 Horas Monitor de Frecuencia Cardíaca y Sueño  ",
-      "precio": 16.99,
+      "precio": 9,
       "categoria": "Deporte",
       "popularidad": 0,
       "tendencia": true
@@ -99,6 +99,29 @@
       "categoria": "Deporte",
       "popularidad": 10,
       "tendencia": false
+    }
+  ],
+  "categorias": [
+    {
+      "name": "Electrónica"
+    },
+    {
+      "name": "Deporte"
+    },
+    {
+      "name": "Salud y Belleza"
+    },
+    {
+      "name": "Hogar"
+    },
+    {
+      "name": "Cosmética"
+    },
+    {
+      "name": "Bricolaje"
+    },
+    {
+      "name": "Alimentación"
     }
   ]
 }
