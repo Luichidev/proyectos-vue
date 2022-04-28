@@ -13,6 +13,9 @@
         />
       </div>
       <div class="form-group">
+        <img  width="100" height="100" :src="img" :alt="producto.titulo">
+      </div>
+      <div class="form-group mb-2">
         <label for="imagen">Imagen</label>
         <input
           type="text"
@@ -22,9 +25,10 @@
           v-model="producto.url"
           name="imagen"
           placeholder="http://"
+          @input="uploadImg"
         />
       </div>
-      <div class="form-group">
+      <!-- <div class="form-group">
         <label for="descripcion">Descripción</label>
         <input
           class="form-control"
@@ -33,6 +37,10 @@
           v-model="producto.descripcion"
           name="descripcion"
         />
+      </div> -->
+      <div class="form-floating">
+        <textarea name="descripcion" v-model="producto.descripcion" class="form-control" placeholder="Leave a comment here" id="descripcion" style="height: 200px"></textarea>
+        <label for="descripcion">Descripción</label>
       </div>
       <div class="form-group">
         <label for="precio">Precio</label>
@@ -49,11 +57,7 @@
         <label for="categoria">Categoria</label>
         <select class="form-select form-select-sm" aria-label=".form-select-sm" id="categoria" v-model="producto.categoria">
           <option value="-1" selected>-</option>
-          <option value="Deporte">Deporte</option>
-          <option value="Maquillaje">Maquillaje</option>
-          <option value="Bricolaje">Bricolaje</option>
-          <option value="Electronica">Electrónica</option>
-          <option value="crear">Crear categoria</option>
+          <option v-for="cat in categorias" :value="cat.name" :key="cat.name">{{ cat.name }}</option>
         </select>
       </div>
       <div class="form-check mb-2">
@@ -89,9 +93,14 @@ export default {
         categoria: "",
         tendencia: false
       },
+      categorias: [],
       submitted: false,
-      optionsSelect: []
+      optionsSelect: [],
+      img: "https://image.shutterstock.com/image-vector/no-image-available-vector-hand-260nw-745639717.jpg"
     };
+  },
+  mounted() {
+    this.getCategories()
   },
   methods: {
     saveProducto() {
@@ -117,6 +126,20 @@ export default {
     newProducto() {
       this.submitted = false;
       this.producto = {};
+    },
+
+    getCategories() {
+      ProductoDataService.getAllCategories()
+      .then(response => {
+        this.categorias = response.data;
+      })
+    },
+
+    uploadImg(event) {
+      const url = event.target.value
+      if(url.includes("http") || url.includes("https")){
+        this.img = url
+      }
     }
   }
 };

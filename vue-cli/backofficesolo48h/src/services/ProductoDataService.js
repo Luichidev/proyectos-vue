@@ -21,5 +21,8 @@ class ProductoDataService {
   findByTitle(title) {
     return http.get(`/productos?q=${title}`)
   }
+  getAllCategories() {
+    return http.get('/categorias')
+  }
 }
 export default new ProductoDataService()

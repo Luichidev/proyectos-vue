@@ -14,6 +14,9 @@
         />
       </div>
       <div class="form-group">
+        <img  width="100" height="100" :src="currentProducto.url" :alt="currentProducto.titulo">
+      </div>
+      <div class="form-group mb-2">
         <label for="imagen">Imagen</label>
         <input
           type="text"
@@ -25,7 +28,7 @@
           placeholder="http://"
         />
       </div>
-      <div class="form-group">
+      <!-- <div class="form-group">
         <label for="descripcion">Descripción</label>
         <input
           class="form-control"
@@ -34,6 +37,10 @@
           v-model="currentProducto.descripcion"
           name="descripcion"
         />
+      </div> -->
+      <div class="form-floating">
+        <textarea name="descripcion" v-model="currentProducto.descripcion" class="form-control" placeholder="Leave a comment here" id="descripcion" style="height: 200px"></textarea>
+        <label for="descripcion">Descripción</label>
       </div>
       <div class="form-group">
         <label for="precio">Precio</label>
@@ -49,11 +56,8 @@
       <div class="form-group">
         <label for="categoria">Categoria</label>
         <select class="form-select form-select-sm" aria-label=".form-select-sm" id="categoria" v-model="currentProducto.categoria">
-          <option value="-1">-</option>
-          <option value="Deporte">Deporte</option>
-          <option value="Maquillaje">Maquillaje</option>
-          <option value="Bricolaje">Bricolaje</option>
-          <option value="Electrónica">Electrónica</option>
+          <option value="-1" selected>-</option>
+          <option v-for="cat in categorias" :value="cat.name" :key="cat.name">{{ cat.name }}</option>
         </select>
       </div>
       <div class="form-check mt-2">
@@ -67,16 +71,19 @@
         <label class="form-check-label" for="tendencia">Tendencia</label>
       </div>
     </form>
-    <button class="btn btn-danger m-2"
-      @click="deleteProducto"
-    >
-      Borrar
-    </button>
-    <button type="submit" class="btn btn-success m-2"
-      @click="updateProducto"
-    >
-      Actualizar
-    </button>
+    <div class="form-group">
+      <router-link to="/productos" class="btn btn-primary">Volver</router-link>
+      <button class="btn btn-danger m-2"
+        @click="deleteProducto"
+      >
+        Borrar
+      </button>
+      <button type="submit" class="btn btn-success"
+        @click="updateProducto"
+      >
+        Actualizar
+      </button>
+    </div> 
     <p class="mt-2">{{ message }}</p>
   </div>
   <div v-else>
@@ -91,7 +98,8 @@ export default {
   data() {
     return {
       currentProducto: null,
-      message: ''
+      message: '',
+      categorias: []
     };
   },
   methods: {
@@ -106,6 +114,7 @@ export default {
         });
     },
     updateProducto() {
+      this.currentProducto.precio = +this.currentProducto.precio
       ProductoDataService.update(this.currentProducto.id, this.currentProducto)
         .then(response => {
           console.log(response.data);
@@ -124,11 +133,18 @@ export default {
         .catch(e => {
           console.log(e);
         });
+    },
+    getCategories() {
+      ProductoDataService.getAllCategories()
+      .then(response => {
+        this.categorias = response.data;
+      })
     }
   },
   mounted() {
     this.message = '';
     this.getProducto(this.$route.params.id);
+    this.getCategories()
   }
 };
 </script>

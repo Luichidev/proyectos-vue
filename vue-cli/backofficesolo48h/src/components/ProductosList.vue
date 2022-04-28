@@ -13,29 +13,6 @@
         </div>
       </div>
     </div>
-    <div class="col-md-6">
-      <h4>Listado de productos</h4>
-      <ul class="list-group">
-        <li class="list-group-item d-flex align-items-center"
-          :class="{ active: index == currentIndex }"
-          v-for="(producto, index) in productos"
-          :key="index"
-          @click="setActiveProducto(producto, index)"
-        >
-        <div class="d-flex align-items-center">
-          <div class="flex-shrink-0">
-            <img width="100" height="100" :src="producto.url" :alt="producto.titulo" :title="producto.titulo">
-          </div>
-          <div class="flex-grow-1 ms-3">
-            {{ producto.titulo }}
-          </div>
-        </div>
-        </li>
-      </ul>
-      <button class="m-3 btn btn-sm btn-danger" @click="removeAllProductos">
-        Eliminar todos
-      </button>
-    </div>
     <div class="col-md-6 fixed">
       <div v-if="currentProducto">
         <h4>Producto</h4>
@@ -62,6 +39,29 @@
         <p>Selecciona un producto del Listado...</p>
       </div>
     </div>
+    <div class="col-md-6">
+      <h4>Listado de productos</h4>
+      <ul class="list-group">
+        <li class="list-group-item d-flex align-items-center"
+          :class="{ active: index == currentIndex }"
+          v-for="(producto, index) in productos"
+          :key="index"
+          @click="setActiveProducto(producto, index)"
+        >
+          <div class="d-flex align-items-center">
+            <div class="flex-shrink-0">
+              <img width="100" height="100" :src="producto.url" :alt="producto.titulo" :title="producto.titulo">
+            </div>
+            <div class="flex-grow-1 ms-3">
+              {{ producto.titulo }}
+            </div>
+          </div>
+        </li>
+      </ul>
+      <button class="m-3 btn btn-sm btn-danger" @click="removeAllProductos">
+        Eliminar todos
+      </button>
+    </div>
   </div>
 </template>
 <script>
@@ -73,7 +73,8 @@ export default {
       productos: [],
       currentProducto: null,
       currentIndex: -1,
-      titulo: ""
+      titulo: "",
+      categoria: []
     };
   },
   methods: {
@@ -130,10 +131,13 @@ export default {
   max-width: 750px;
   margin: auto;
 }
-.fixed {
-  position: fixed;
-  right: 0;
-  z-index: 1030;
-  top: 110px;
+
+@media screen and (min-width:768px){
+  .fixed {
+    position: fixed;
+    right: 0;
+    z-index: 1030;
+    top: 200px;
+  }
 }
 </style>

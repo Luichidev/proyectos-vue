@@ -2,7 +2,9 @@
   <div id="app">
     <nav class="navbar navbar-expand navbar-dark bg-dark sticky-top">
       <div class="container">  
-        <router-link to="/" class="navbar-brand">Solo48h</router-link>
+        <router-link to="/" class="navbar-brand">
+          <img src="./assets/Logo.svg" alt="Logo empresa" class="d-inline-block align-text-top" width="60%">
+        </router-link>
         <div class="navbar-nav mr-auto">
           <li class="nav-item">
             <router-link to="/productos" class="nav-link">Ver productos</router-link>
