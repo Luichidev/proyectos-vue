@@ -27,7 +27,8 @@ export default {
   data() {
     return {
       pokemon: 'PIKACHU',
-      polemonLength: 0,
+      pokemonLength: 0,
+      pokemonLetters: "",
       word: '',
       again: false,
       win: false,
@@ -120,15 +121,18 @@ export default {
           })
         }
       } else {
-        console.log(this.previousGuesses)
         const letters = this.word.split('')
+
         letters.forEach((letter, index) => {
-          if (letter === this.pokemon[index]) {
+          if (letter === this.pokemonLetters[index]) {
             result[index] = { name: letter, color: 'green' }
-          } else if (this.pokemon.includes(letter)) {
+            this.pokemonLetters = this.pokemonLetters.replace(letter, ' ')
+          } else if (this.pokemonLetters.includes(letter)) {
             result[index] = { name: letter, color: 'yellow' }
+            this.pokemonLetters = this.pokemonLetters.replace(letter, ' ')
           } else {
             result[index] = { name: letter, color: 'grey' }
+
           }
         })
       }
@@ -158,6 +162,7 @@ export default {
           this.imgUrl = data.sprites.front_default
           this.pokemon = data.name.toUpperCase()
           this.midDash = this.pokemon.includes('-')
+          this.pokemonLetters = this.pokemon;
           return this.pokemon.length
         })
     },
